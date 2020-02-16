@@ -8,22 +8,21 @@ class Team {
         this.defence = 10
     }
 
-    // *[Symbol.iterator]() {
-    //     let newEnemy = new Team();
-    //     yield
-    //     return newEnemy
-    // }
+    *[Symbol.iterator]() {
+        let newEnemy = new Team();
+        yield
+        return newEnemy
+    }
 }
 
-let enemy;
-let enemy2;
-let enemy3;
-
 function* generateEnemy() {
-    yield enemy = new Team('first');
-    yield enemy2 = new Team('second');
-    yield enemy3 = new Team('third');
-    return 333;
+    let enemy = new Team('first');
+    yield enemy;
+    let enemy2 = new Team('second');
+    yield enemy2;
+    let enemy3 = new Team('third');
+    yield enemy3;
+    return
 }
 
 let generate = generateEnemy();
