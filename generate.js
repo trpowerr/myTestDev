@@ -9,23 +9,17 @@ class Team {
     }
 
     *[Symbol.iterator]() {
-        let newEnemy = new Team();
-        yield
-        return newEnemy
+        let enemy = new Team('first');
+        yield enemy;
+        let enemy2 = new Team('second');
+        yield enemy2;
+        let enemy3 = new Team('third');
+        yield enemy3;
+        return
     }
 }
 
-function* generateEnemy() {
-    let enemy = new Team('first');
-    yield enemy;
-    let enemy2 = new Team('second');
-    yield enemy2;
-    let enemy3 = new Team('third');
-    yield enemy3;
-    return
-}
-
-let generate = generateEnemy();
+let generate = new Team()[Symbol.iterator]();
 
 let one = generate.next();
 
