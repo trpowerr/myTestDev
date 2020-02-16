@@ -96,11 +96,3 @@ let person = enemyTeam[Symbol.iterator]();
 console.log(person.next());
 console.log(person.next());
 
-// enemyTeam[Symbol.iterator] = function() {
-
-//     return {
-//         next() {
-
-//         }
-//     }
-// }
