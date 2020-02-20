@@ -1,12 +1,3 @@
-function json(data) {
-  return new Promise((resolve, reject) => {
-    // эмуляция обработки ArrayBuffer
-    setTimeout(() => {
-      resolve(String.fromCharCode.apply(null, new Uint16Array(this.data)));
-    }, 500);
-  });
-}
-
 function read() {
   return new Promise((resolve, reject) => {
     // эмуляция чтения файла
@@ -24,6 +15,15 @@ function read() {
   });
 }
 
+function json(data) {
+  return new Promise((resolve, reject) => {
+    // эмуляция обработки ArrayBuffer
+    setTimeout(() => {
+      resolve(String.fromCharCode.apply(null, new Uint16Array(data)));
+    }, 500);
+  });
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
 class GameSavingLoader {
@@ -32,7 +32,7 @@ class GameSavingLoader {
    read().then((data) => {
      return json(data);
    }).then((data) => {
-     return console.log('worked!',data)
+     return console.log(data);
    })
   }
 }  
@@ -40,13 +40,7 @@ class GameSavingLoader {
 const newSave = new GameSavingLoader();
 
 
-console.log(newSave.load())
-
-
-
-
-
-GameSavingLoader.load().then((saving) => {
+newSave.load().then((saving) => {
     console.log('Save ', saving)
   }, (error) => {
     console.log('ERORRR')
